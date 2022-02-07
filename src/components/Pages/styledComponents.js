@@ -59,12 +59,6 @@ export const CheckBox= styled.input`
 export const SpanHighlight= styled.span`
     font-weight: bold;
 `
-export const HorizontalLine= styled.hr`
-    width: 100%;
-    height: 1px;
-    background-color: lightgrey;
-    border-style: none;
-`
 export const ListButton= styled.button`
     width: 22px;
     height: 22px;

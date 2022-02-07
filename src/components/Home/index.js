@@ -182,7 +182,7 @@ class Home extends Component{
         const currentPageMembers= newList.slice(indexOfFirstMember,indexOfLastMember)
         return (
             <HomeSuccessContainer>
-                <Pages currentPage={currentPage} sourceCheckBox={sourceCheckBox} searchValue={searchValue} searchList={this.searchList} changeListOnSearch={this.changeListOnSearch} editIdFunction={this.editIdFunction} nameChange={this.nameChange} emailChange={this.emailChange} roleChange={this.roleChange} editId={editId} deleteItemFunction={this.deleteItem} currentPageMembers={currentPageMembers} currentPage={currentPage} checkBoxIdList={checkBoxIdList} checkBoxIdAddFunction={this.checkBoxIdAdd} checkBoxIdRemoveFunction={this.checkBoxIdRemove}/>
+                <Pages sourceCheckBox={sourceCheckBox} searchValue={searchValue} searchList={this.searchList} changeListOnSearch={this.changeListOnSearch} editIdFunction={this.editIdFunction} nameChange={this.nameChange} emailChange={this.emailChange} roleChange={this.roleChange} editId={editId} deleteItemFunction={this.deleteItem} currentPageMembers={currentPageMembers} currentPage={currentPage} checkBoxIdList={checkBoxIdList} checkBoxIdAddFunction={this.checkBoxIdAdd} checkBoxIdRemoveFunction={this.checkBoxIdRemove}/>
                 <DeleteCheckBox type="button" onClick={this.deleteSelected} >Delete Selected</DeleteCheckBox>
                 <Pagination paginateSpecial={this.paginateSpecialFunction} membersPerPage={membersPerPage} totalMembers={newList.length} paginate={this.paginateFunction} currentPage={currentPage} />
             </HomeSuccessContainer>

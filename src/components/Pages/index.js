@@ -4,7 +4,7 @@ import {FaEdit} from 'react-icons/fa'
 
 import {AiOutlineDelete} from 'react-icons/ai'
 
-import {PagesContainer,TopSearchbar,MembersList,MembersListItem,ListItemMember,CheckBox,SpanHighlight,HorizontalLine,ListButton,ListItemInput,} from './styledComponents'
+import {PagesContainer,TopSearchbar,MembersList,MembersListItem,ListItemMember,CheckBox,SpanHighlight,ListButton,ListItemInput,} from './styledComponents'
 
 class Pages extends Component{
 

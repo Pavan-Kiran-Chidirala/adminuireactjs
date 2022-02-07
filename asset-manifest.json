@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/adminui-reactjs/static/css/main.672e9f25.css",
+    "main.js": "/adminui-reactjs/static/js/main.40d40c9d.js",
+    "index.html": "/adminui-reactjs/index.html",
+    "main.672e9f25.css.map": "/adminui-reactjs/static/css/main.672e9f25.css.map",
+    "main.40d40c9d.js.map": "/adminui-reactjs/static/js/main.40d40c9d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.672e9f25.css",
+    "static/js/main.40d40c9d.js"
+  ]
+}

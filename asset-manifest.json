@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/adminui-reactjs/static/css/main.672e9f25.css",
-    "main.js": "/adminui-reactjs/static/js/main.40d40c9d.js",
-    "index.html": "/adminui-reactjs/index.html",
-    "main.672e9f25.css.map": "/adminui-reactjs/static/css/main.672e9f25.css.map",
-    "main.40d40c9d.js.map": "/adminui-reactjs/static/js/main.40d40c9d.js.map"
+    "main.css": "/adminuireactjs/static/css/main.672e9f25.css",
+    "main.js": "/adminuireactjs/static/js/main.1b4e127e.js",
+    "index.html": "/adminuireactjs/index.html",
+    "main.672e9f25.css.map": "/adminuireactjs/static/css/main.672e9f25.css.map",
+    "main.1b4e127e.js.map": "/adminuireactjs/static/js/main.1b4e127e.js.map"
   },
   "entrypoints": [
     "static/css/main.672e9f25.css",
-    "static/js/main.40d40c9d.js"
+    "static/js/main.1b4e127e.js"
   ]
 }

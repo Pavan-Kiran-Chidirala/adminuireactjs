@@ -6,7 +6,7 @@ import Pages from '../Pages'
 
 import Pagination from '../Pagination'
 
-import {MainHomeContainer,HomeLoaderContainer,HomeSuccessContainer,DeleteCheckBox,} from './styledComponents.js'
+import {MainHomeContainer,HomeLoaderContainer,HomeSuccessContainer,DeleteCheckBox,BottomContainer,} from './styledComponents.js'
 
 const appConstants= {
     initial: 'INITIAL',
@@ -68,7 +68,7 @@ class Home extends Component{
         else if(value === 'front' && currentPage !== (Math.ceil(newList.length/membersPerPage))){
             this.setState(prevState => ({currentPage: prevState.currentPage + 1}))
         }
-        else{
+        else if(value === 'front-last' && currentPage !== (Math.ceil(newList.length/membersPerPage))){
             this.setState({currentPage: Math.ceil(newList.length/membersPerPage)})
         }
     }
@@ -206,10 +206,12 @@ class Home extends Component{
                 currentPageMembers={currentPageMembers} currentPage={currentPage} checkBoxIdList={checkBoxIdList}
                 checkBoxIdAddFunction={this.checkBoxIdAdd} checkBoxIdRemoveFunction={this.checkBoxIdRemove}/>
 
+                <BottomContainer>
                 <DeleteCheckBox type="button" onClick={this.deleteSelected} >Delete Selected</DeleteCheckBox>
 
                 <Pagination paginateSpecial={this.paginateSpecialFunction} membersPerPage={membersPerPage} totalMembers={newList.length} 
                 paginate={this.paginateFunction} currentPage={currentPage} />
+                </BottomContainer>
 
             </HomeSuccessContainer>
         )

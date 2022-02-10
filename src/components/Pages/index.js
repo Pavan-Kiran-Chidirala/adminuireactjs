@@ -4,7 +4,7 @@ import {FaEdit} from 'react-icons/fa'
 
 import {AiOutlineDelete} from 'react-icons/ai'
 
-import {PagesContainer,TopSearchbar,MembersList,MembersListItem,ListItemMember,CheckBox,SpanHighlight,ListButton,ListItemInput,} from './styledComponents'
+import {PagesContainer,TopSearchbar,MembersList,MembersListItem,ListItemMemberLg,ListItemMemberSm,CheckBox,SpanHighlight,ListButton,ListItemInputLg,ListItemInputSm,} from './styledComponents'
 
 class Pages extends Component{
 
@@ -81,57 +81,57 @@ class Pages extends Component{
             <TopSearchbar type="search" value={searchValue} placeholder='Search by name, email or role' onChange={searchList} />
             <MembersList>
             <MembersListItem key='z' condition={false}>
-                <ListItemMember>
+                <ListItemMemberSm>
                     <CheckBox type="checkbox" id={`0${currentPage}`} onChange={checkBoxChange} checked={checkBoxIdList.includes(`0${currentPage}`)} />
-                </ListItemMember>
-                <ListItemMember >
+                </ListItemMemberSm>
+                <ListItemMemberLg >
                     <SpanHighlight>Name</SpanHighlight>
-                </ListItemMember>
-                <ListItemMember >
+                </ListItemMemberLg>
+                <ListItemMemberLg >
                     <SpanHighlight>Email</SpanHighlight>
-                </ListItemMember>
-                <ListItemMember >
+                </ListItemMemberLg>
+                <ListItemMemberSm >
                     <SpanHighlight>Role</SpanHighlight>
-                </ListItemMember>
-                <ListItemMember >
+                </ListItemMemberSm>
+                <ListItemMemberSm >
                     <SpanHighlight>Actions</SpanHighlight>
-                </ListItemMember>
+                </ListItemMemberSm>
             </MembersListItem>
         
                 {
                     currentPageMembers.map(eachValue => 
                         <>
                         <MembersListItem key={eachValue.id} condition={checkBoxIdList.includes(eachValue.id)}>
-                                <ListItemMember >
+                                <ListItemMemberSm >
                                     <CheckBox id={eachValue.id} type="checkbox" onChange={checkBoxChange} checked={checkBoxIdList.includes(eachValue.id)} />
-                                </ListItemMember>
+                                </ListItemMemberSm>
                                 {
                                         editId === eachValue.id ?
                                 <>
-                                <ListItemInput  value={name} onChange={this.nameValue} type="text" id={eachValue.id} placeholder={eachValue.name} onKeyDown={localChangeValueFunction} onBlur={() => blurChange(name,email,role,eachValue.id)}/>
-                                <ListItemInput  value={email} onChange={this.emailValue} type="text" id={eachValue.id}  placeholder={eachValue.email} onKeyDown={localChangeValueFunction} onBlur={() => blurChange(name,email,role,eachValue.id)}/>
-                                <ListItemInput  value={role} onChange={this.roleValue} type="text" id={eachValue.id} placeholder={eachValue.role} onKeyDown={localChangeValueFunction} onBlur={() => blurChange(name,email,role,eachValue.id)}/>
+                                <ListItemInputLg  value={name} onChange={this.nameValue} type="text" id={eachValue.id} placeholder={eachValue.name} onKeyDown={localChangeValueFunction} onBlur={() => blurChange(name,email,role,eachValue.id)}/>
+                                <ListItemInputLg  value={email} onChange={this.emailValue} type="text" id={eachValue.id}  placeholder={eachValue.email} onKeyDown={localChangeValueFunction} onBlur={() => blurChange(name,email,role,eachValue.id)}/>
+                                <ListItemInputSm  value={role} onChange={this.roleValue} type="text" id={eachValue.id} placeholder={eachValue.role} onKeyDown={localChangeValueFunction} onBlur={() => blurChange(name,email,role,eachValue.id)}/>
                                 </>
                                 :
                                 <>
-                                <ListItemMember >
+                                <ListItemMemberLg >
                                 {eachValue.name}
-                                </ListItemMember>
-                                <ListItemMember >
+                                </ListItemMemberLg>
+                                <ListItemMemberLg >
                                     {eachValue.email}
-                                </ListItemMember>
-                                <ListItemMember >
+                                </ListItemMemberLg>
+                                <ListItemMemberSm >
                                     {eachValue.role}
-                                </ListItemMember>
+                                </ListItemMemberSm>
                                 </>}
-                                <ListItemMember >
+                                <ListItemMemberSm >
                                     <ListButton type='button' onClick={() => this.localEditId(eachValue.id)}>
-                                    <FaEdit fontSize={15} color={'purple'}/>
+                                    <FaEdit color={'purple'}/>
                                     </ListButton>
                                     <ListButton type='button' onClick={() => deleteItemFunction(eachValue.id)}>
-                                    <AiOutlineDelete fontSize={15} color={'tomato'} />
+                                    <AiOutlineDelete color={'tomato'} />
                                     </ListButton>
-                                </ListItemMember>
+                                </ListItemMemberSm>
                         </MembersListItem>              
                         </>
                         )

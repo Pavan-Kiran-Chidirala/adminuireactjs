@@ -1,19 +1,35 @@
 import styled from "styled-components"
 
 export const PaginationContainer= styled.ul`
-    width: 100%;
+    width: 90%;
+    height: 50px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     list-style-type: none;
     pading: 0px;
+    padding-left: 20%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    @media screen and (max-width: 576px) {
+        width: 90%;
+        height: 30px;
+        padding-left: 5%;
+    }
 `
 export const PaginationItem= styled.li`
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 25px;
-    margin-right: 20px;
+    margin-right: 40px;
+    @media screen and (max-width: 576px) {
+        width: 18px;
+        height: 18px;
+        border-radius: 25px;
+        margin-right: 10px;
+    }
 `
 export const PaginationButtons= styled.button`
     width: 100%;
@@ -29,6 +45,9 @@ export const PaginationButtons= styled.button`
     border-radius: 25px;
     color: ${props => (props.condition ? '#0070ff': 'white')};
     font-size: 12px;
+    @media screen and (max-width: 576px) {
+        font-size: 8px;
+    }
 `
 export const BackButton= styled(PaginationButtons)`
     background-color: ${props => (props.condition ? '#e5edf1': '#0070ff')};

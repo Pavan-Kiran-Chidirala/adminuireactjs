@@ -8,20 +8,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### `Component Hierrarchy`
 
-— Home
+Home
 — Pages Pagination
 
 ### `Functionalities`
 
-— Search
-— Edit
-— Delete
-— Delete Selected
-— Select
-— Select All
-— Pagination
+Unordered Lists:
+Search Edit Delete [Delete Selected] Select [Select All] Pagination
 
-— The page doesn't reload when you make changes.\
+The page doesn't reload when you make changes.\
 You may also see any lint errors in the console.
 
 ### `How it works`

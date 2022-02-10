@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Getting Started with AdminUi App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an interface for admins to see and delete users.
+The users will be provided via an API.
+The pages displayed contains a maximum of 10 members in each page and the count of pages depends on the members count.
+Note: The AdminUi gets reseted to the initial state after clicking on refresh.
 
-## Available Scripts
+### `Component Hierrarchy`
 
-In the project directory, you can run:
+Home
+Pages Pagination
 
-### `npm start`
+### `Functionalities`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Search
+Edit
+Delete
+Delete Selected
+Select
+Select All
+Pagination
 
-The page will reload when you make changes.\
+The page doesn't reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### `How it works`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### `Search Functionality`
 
-### `npm run build`
+The searching can be done using the searchbar at the top, It searches the columns with the column names - name, eamil and role with the search value and displays the results which mathces the search value.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### `Select Functionality`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+We can select a specific member using the checkbox filed that is placed at the left corner of every row. This inturn turns the background color of the selected row to gray color.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### `Select All Functionality`
 
-### `npm run eject`
+We can select every member of the current page by clicking on the checkbox field at the top left corner in the page.
+This inturn turns the background color of the selected rows to gray color.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### `Delete Functionality`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Every member row contains a delete icon button at the right corner. Clicking on this icon will delete the row from the current list.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### `Delete Selected Functionality`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This can be found at the bottom left corner of the page and Clicking on it will delete all the selected members from the current list.
 
-## Learn More
+#### `Edit Functionality`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This can be found at the right corner of every member row and Clicking on it will make the specific row editable.
+After editing the field, clicking 'Enter' will save the changes.
+If we click 'Enter' without making changes then the previous value will be displayed for the unedited fields.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### `Pagination`
 
-### Code Splitting
+Every page contains the pagination field at the bottom. The current page will be highlighted at all times and we can switch between pages swiftly by clicking on the specific page number.
+Note: The pagination count will be updated on deleting the members.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### `Visit the AdminUi`
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[https://Pavan-Kiran-Chidirala.github.io/adminuireactjs](https://Pavan-Kiran-Chidirala.github.io/adminuireactjs)

@@ -15,23 +15,27 @@ const appConstants= {
     failure: 'FAILURE',
 }
 
+
+// This is the list which is displayed in the app
 let newList= []
 
 class Home extends Component{
     state={
         appStatus: appConstants.initial,
-        membersList: [],
-        currentPage: 1,
+        membersList: [], // main list from the API call
+        currentPage: 1,  
         membersPerPage: 10,
-        checkBoxIdList: [],
-        editId: '',
-        searchValue: '',
-        sourceCheckBox: false,
+        checkBoxIdList: [], // A list to store selected checkboxes
+        editId: '',  // key to store the id of the member to be edited
+        searchValue: '', // key to store value entered in the searchbar
+        sourceCheckBox: false, // key to handle top left checkbox behaviour
     }
 
     componentDidMount(){
         this.setState({appStatus: appConstants.progress},this.getMemberDetails)
     }
+
+    // class method to get data from the API
 
     getMemberDetails= async() => {
         const response= await fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json')
@@ -42,9 +46,16 @@ class Home extends Component{
         }
     }
 
+    // class methods which are passed to pagination component
+    // start
+
+    //class method to set the current page value on numbered button click
+
     paginateFunction= (value) => (
         this.setState({currentPage: value})
     )
+
+     //class method to set the current page value on icon button click
 
     paginateSpecialFunction= (value) => {
         const {currentPage,membersPerPage}= this.state
@@ -62,70 +73,78 @@ class Home extends Component{
         }
     }
 
-    nameChange= (e) => {
+    //end
+
+    // class methods which are passed to pages component
+    // start
+
+    // class method to change input field values on edit
+
+    changeValueFunction= (nameValue,emailValue,roleValue,id) => {
         const {membersList}= this.state
-        console.log(e.key)
-        if(e.key === 'Enter'){
             const newList= membersList.map(eachValue => {
-                if(e.target.id === eachValue.id && e.target.value !== ''){
+                if(id === eachValue.id){
                     return({
-                        name: e.target.value,
+                        name: nameValue === ''?eachValue.name: nameValue,
                         id: eachValue.id,
-                        email: eachValue.email,
-                        role: eachValue.role,
+                        email: emailValue === ''? eachValue.email: emailValue,
+                        role: roleValue === ''? eachValue.role: roleValue,
                     })
                 }
                 return eachValue
             })
             this.setState({membersList: newList,editId: ''})
-        }
     }
 
-    emailChange= (e) => {
+    // class method to save edited values on blur event 
+
+    blurChange= (nameValue,emailValue,roleValue,id) =>  {
         const {membersList}= this.state
-        if(e.key === 'Enter'){
-            const newList= membersList.map(eachValue => {
-                if(e.target.id === eachValue.id && e.target.value !== ''){
-                    return({
-                        name: eachValue.name,
-                        id: eachValue.id,
-                        email: e.target.value,
-                        role: eachValue.role,
-                    })
-                }
-                return eachValue
-            })
-            this.setState({membersList: newList,editId: ''})
-        }
+            if(nameValue !== '' && emailValue !== '' && roleValue !== ''){
+                const newList= membersList.map(eachValue => {
+                    if(id === eachValue.id){
+                        return({
+                            name: nameValue === ''?eachValue.name: nameValue,
+                            id: eachValue.id,
+                            email: emailValue === ''? eachValue.email: emailValue,
+                            role: roleValue === ''? eachValue.role: roleValue,
+                        })
+                    }
+                    return eachValue
+                })
+                this.setState({membersList: newList,editId: ''})
+            }
     }
 
-    roleChange= (e) => {
-        const {membersList}= this.state
-        if(e.key === 'Enter'){
-            const newList= membersList.map(eachValue => {
-                if(e.target.id === eachValue.id && e.target.value !== ''){
-                    return({
-                        name: eachValue.name,
-                        id: eachValue.id,
-                        email: eachValue.email,
-                        role: e.target.value,
-                    })
-                }
-                return eachValue
-            })
-            this.setState({membersList: newList,editId: ''})
-        }
-    }
+    //class method to update search value
 
     searchList= (e) => (
         this.setState({searchValue: e.target.value,currentPage: 1})
     )
+
+    //class method to delete a specific member
 
     deleteItem= (value) => {
         const {membersList}= this.state
         const newList= membersList.filter(eachValue => eachValue.id !== value)
         this.setState({membersList: newList})
     }
+
+    // class method to delete the group of selected members in a page
+
+    deleteSelected= () => {
+        const {checkBoxIdList,membersList,currentPage,membersPerPage}= this.state
+        const newList= membersList.filter(eachValue => !checkBoxIdList.includes(eachValue.id))
+        const newCheckBoxIdList= checkBoxIdList.filter(eachValue => eachValue !== `0${currentPage}`)
+        console.log(currentPage)
+        let newCurrentPage= currentPage
+        if(currentPage === (Math.ceil(newList.length/membersPerPage)+1)){
+            newCurrentPage= currentPage-1
+        }
+        this.setState({membersList: newList,sourceCheckBox: true,checkBoxIdList: newCheckBoxIdList,currentPage: newCurrentPage})
+    }
+
+    // class method to add checkbox id/id's of selected member/members to the checkbox list
 
     checkBoxIdAdd= (value) => {
         const {checkBoxIdList}= this.state
@@ -137,6 +156,8 @@ class Home extends Component{
             this.setState(prevState => ({checkBoxIdList: [...prevState.checkBoxIdList,value],sourceCheckBox: false}))
         }
     }
+
+    // class method to remove checkbox id/id's of selected member/members from the checkbox list
 
     checkBoxIdRemove= (value) => {
         const {checkBoxIdList}= this.state
@@ -150,23 +171,18 @@ class Home extends Component{
         }
     }
 
+    // class method to add the specific member id to be edited to the edit list
+
     editIdFunction =(value) => (
         this.setState({editId: value})
     )
 
-    deleteSelected= () => {
-        const {checkBoxIdList,membersList,currentPage,membersPerPage}= this.state
-        const newList= membersList.filter(eachValue => !checkBoxIdList.includes(eachValue.id))
-        const newCheckBoxIdList= checkBoxIdList.filter(eachValue => eachValue !== `0${currentPage}`)
-        console.log(currentPage)
-        let newCurrentPage= currentPage
-        if(currentPage === (Math.ceil(newList.length/membersPerPage)+1)){
-            newCurrentPage= currentPage-1
-        }
-        console.log(Math.ceil(newList.length/membersPerPage))
-        this.setState({membersList: newList,searchValue: '',sourceCheckBox: true,checkBoxIdList: newCheckBoxIdList,currentPage: newCurrentPage})
-    }
+    // end
 
+    // home class methods
+    // start
+
+    // class method to show the loader when dealing with the asynchronus API call
 
     homeLoaderContainer =() => (
         <HomeLoaderContainer>
@@ -174,32 +190,43 @@ class Home extends Component{
         </HomeLoaderContainer>
     )
 
+    // class method to display the response on successful API call
+
     homeSuccessContainer= () => {
         const {membersList,currentPage,membersPerPage,checkBoxIdList,editId,searchValue,sourceCheckBox}= this.state
-        newList= membersList.filter(eachValue => (eachValue.name.includes(searchValue) || eachValue.email.includes(searchValue) || eachValue.role.includes(searchValue)))
+        newList= membersList.filter(eachValue => (eachValue.name.toLowerCase().includes(searchValue.toLowerCase()) || eachValue.email.toLowerCase().includes(searchValue.toLowerCase()) || eachValue.role.toLowerCase().includes(searchValue.toLowerCase())))
         const indexOfLastMember= currentPage * membersPerPage
         const indexOfFirstMember= indexOfLastMember - membersPerPage
         const currentPageMembers= newList.slice(indexOfFirstMember,indexOfLastMember)
         return (
             <HomeSuccessContainer>
-                <Pages sourceCheckBox={sourceCheckBox} searchValue={searchValue} searchList={this.searchList} changeListOnSearch={this.changeListOnSearch} editIdFunction={this.editIdFunction} nameChange={this.nameChange} emailChange={this.emailChange} roleChange={this.roleChange} editId={editId} deleteItemFunction={this.deleteItem} currentPageMembers={currentPageMembers} currentPage={currentPage} checkBoxIdList={checkBoxIdList} checkBoxIdAddFunction={this.checkBoxIdAdd} checkBoxIdRemoveFunction={this.checkBoxIdRemove}/>
+
+                <Pages blurChange={this.blurChange} changeValueFunction={this.changeValueFunction} sourceCheckBox={sourceCheckBox} searchValue={searchValue} searchList={this.searchList} 
+                changeListOnSearch={this.changeListOnSearch} editIdFunction={this.editIdFunction}  editId={editId} deleteItemFunction={this.deleteItem}
+                currentPageMembers={currentPageMembers} currentPage={currentPage} checkBoxIdList={checkBoxIdList}
+                checkBoxIdAddFunction={this.checkBoxIdAdd} checkBoxIdRemoveFunction={this.checkBoxIdRemove}/>
+
                 <DeleteCheckBox type="button" onClick={this.deleteSelected} >Delete Selected</DeleteCheckBox>
-                <Pagination paginateSpecial={this.paginateSpecialFunction} membersPerPage={membersPerPage} totalMembers={newList.length} paginate={this.paginateFunction} currentPage={currentPage} />
+
+                <Pagination paginateSpecial={this.paginateSpecialFunction} membersPerPage={membersPerPage} totalMembers={newList.length} 
+                paginate={this.paginateFunction} currentPage={currentPage} />
+
             </HomeSuccessContainer>
         )
     } 
 
-checkCondition = () => {
-    const {appStatus}= this.state
-    switch (appStatus) {
-        case appConstants.success:
+    // class method to check the app status
+
+    checkCondition = () => {
+        const {appStatus}= this.state
+        switch (appStatus) {
+            case appConstants.success:
+                return this.homeSuccessContainer()
             
-            return this.homeSuccessContainer()
-        
-        default:
-            return this.homeLoaderContainer()
+            default:
+                return this.homeLoaderContainer()
+        }
     }
-}
 
     render(){
         return(
@@ -208,6 +235,8 @@ checkCondition = () => {
             </MainHomeContainer>
         )
     }
+
+    // end
 }
 
 export default Home

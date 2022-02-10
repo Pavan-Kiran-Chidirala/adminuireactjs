@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 — The pages displayed contains a maximum of 10 members in each page and the count of pages depends on the members count.
 — Note: The AdminUi gets reseted to the initial state after clicking on refresh.
 
+### `API reference`
+
+https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json
+
 ### `Component Hierrarchy`
 
 ```
@@ -64,4 +68,4 @@ Note: The pagination count will be updated on deleting the members.
 
 #### `Visit the AdminUi`
 
-[https://Pavan-Kiran-Chidirala.github.io/adminuireactjs](https://Pavan-Kiran-Chidirala.github.io/adminuireactjs)
+https://Pavan-Kiran-Chidirala.github.io/adminuireactjs

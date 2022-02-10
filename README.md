@@ -1,27 +1,27 @@
 # Getting Started with AdminUi App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-This is an interface for admins to see and delete users.
-The users will be provided via an API.
-The pages displayed contains a maximum of 10 members in each page and the count of pages depends on the members count.
-Note: The AdminUi gets reseted to the initial state after clicking on refresh.
+— This is an interface for admins to see and delete users.
+— The users will be provided via an API.
+— The pages displayed contains a maximum of 10 members in each page and the count of pages depends on the members count.
+— Note: The AdminUi gets reseted to the initial state after clicking on refresh.
 
 ### `Component Hierrarchy`
 
-Home
-Pages Pagination
+— Home
+— Pages Pagination
 
 ### `Functionalities`
 
-Search
-Edit
-Delete
-Delete Selected
-Select
-Select All
-Pagination
+— Search
+— Edit
+— Delete
+— Delete Selected
+— Select
+— Select All
+— Pagination
 
-The page doesn't reload when you make changes.\
+— The page doesn't reload when you make changes.\
 You may also see any lint errors in the console.
 
 ### `How it works`

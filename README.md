@@ -14,7 +14,7 @@ Home
 ### `Functionalities`
 
 Unordered Lists:
-Search Edit Delete [Delete Selected] Select [Select All] Pagination
+Search 1Edit 2Delete 3Delete Selected 4Select 5Select All 6Pagination 7
 
 The page doesn't reload when you make changes.\
 You may also see any lint errors in the console.

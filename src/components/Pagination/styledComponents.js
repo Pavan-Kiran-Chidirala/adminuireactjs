@@ -14,7 +14,7 @@ export const PaginationContainer= styled.ul`
     margin-top: 0px;
     margin-right: 0px;
     @media screen and (max-width: 576px) {
-        width: 90%;
+        width: 500px;
         height: 30px;
         padding-left: 5%;
     }
@@ -23,7 +23,7 @@ export const PaginationItem= styled.li`
     width: 35px;
     height: 35px;
     border-radius: 25px;
-    margin-right: 40px;
+    margin-right: 30px;
     @media screen and (max-width: 576px) {
         width: 18px;
         height: 18px;

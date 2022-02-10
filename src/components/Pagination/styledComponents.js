@@ -23,7 +23,7 @@ export const PaginationItem= styled.li`
     width: 35px;
     height: 35px;
     border-radius: 25px;
-    margin-right: 30px;
+    margin-right: 35px;
     @media screen and (max-width: 576px) {
         width: 18px;
         height: 18px;

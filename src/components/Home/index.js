@@ -32,7 +32,7 @@ class Home extends Component{
     }
 
     componentDidMount(){
-        this.setState({appStatus: appConstants.progress},this.getMemberDetails)
+        this.startFetching()
     }
 
     // class method to call the getMemberDetails

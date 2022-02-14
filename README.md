@@ -66,6 +66,10 @@ If we click 'Enter' without making changes then the previous value will be displ
 Every page contains the pagination field at the bottom. The current page will be highlighted at all times and we can switch between pages swiftly by clicking on the specific page number.
 Note: The pagination count will be updated on deleting the members.
 
+#### `Run the Tests`
+
+##### `npm run test`
+
 #### `Visit the AdminUi`
 
 https://Pavan-Kiran-Chidirala.github.io/adminuireactjs

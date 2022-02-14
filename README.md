@@ -68,7 +68,7 @@ Note: The pagination count will be updated on deleting the members.
 
 #### `Run the Tests`
 
-##### `npm run test`
+`npm run test`
 
 #### `Visit the AdminUi`
 

@@ -56,3 +56,23 @@ export const DeleteCheckBox= styled.button`
         width: 75px;
     }
 `
+export const HomeFailureContainer= styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+export const HomeFailureHeading= styled.h1`
+    font-size: 25px;
+`
+export const RetryButton= styled.button`
+    padding: 10px;
+    font-size: 12px;
+    border-style: none;
+    outline: none;
+    border-radius: 4px;
+    background-color: royalblue;
+    color: white;
+`

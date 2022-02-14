@@ -78,9 +78,9 @@ class Pages extends Component{
 
         return(
         <PagesContainer>
-            <TopSearchbar type="search" value={searchValue} placeholder='Search by name, email or role' onChange={searchList} />
-            <MembersList>
-            <MembersListItem key='z' condition={false}>
+            <TopSearchbar data-testid='searchElement' type="search" value={searchValue} placeholder='Search by name, email or role' onChange={searchList} />
+            <MembersList data-testid='pageslist'>
+            <MembersListItem key='abc' condition={false}>
                 <ListItemMemberSm>
                     <CheckBox type="checkbox" id={`0${currentPage}`} onChange={checkBoxChange} checked={checkBoxIdList.includes(`0${currentPage}`)} />
                 </ListItemMemberSm>
@@ -108,7 +108,7 @@ class Pages extends Component{
                                 {
                                         editId === eachValue.id ?
                                 <>
-                                <ListItemInputLg  value={name} onChange={this.nameValue} type="text" id={eachValue.id} placeholder={eachValue.name} onKeyDown={localChangeValueFunction} onBlur={() => blurChange(name,email,role,eachValue.id)}/>
+                                <ListItemInputLg data-testid='editTest'  value={name} onChange={this.nameValue} type="text" id={eachValue.id} placeholder={eachValue.name} onKeyDown={localChangeValueFunction} onBlur={() => blurChange(name,email,role,eachValue.id)}/>
                                 <ListItemInputLg  value={email} onChange={this.emailValue} type="text" id={eachValue.id}  placeholder={eachValue.email} onKeyDown={localChangeValueFunction} onBlur={() => blurChange(name,email,role,eachValue.id)}/>
                                 <ListItemInputSm  value={role} onChange={this.roleValue} type="text" id={eachValue.id} placeholder={eachValue.role} onKeyDown={localChangeValueFunction} onBlur={() => blurChange(name,email,role,eachValue.id)}/>
                                 </>
@@ -125,10 +125,10 @@ class Pages extends Component{
                                 </ListItemMemberSm>
                                 </>}
                                 <ListItemMemberSm >
-                                    <ListButton type='button' onClick={() => this.localEditId(eachValue.id)}>
+                                    <ListButton type='button' onClick={() => this.localEditId(eachValue.id)} data-testid={`edit${eachValue.id}`}>
                                     <FaEdit color={'purple'}/>
                                     </ListButton>
-                                    <ListButton type='button' onClick={() => deleteItemFunction(eachValue.id)}>
+                                    <ListButton type='button' onClick={() => deleteItemFunction(eachValue.id)} data-testid={`delete${eachValue.id}`}>
                                     <AiOutlineDelete color={'tomato'} />
                                     </ListButton>
                                 </ListItemMemberSm>

@@ -12,7 +12,7 @@ class Pagination extends Component{
             pageNumbers.push(i)
         }
         return(
-            <PaginationContainer>
+            <PaginationContainer data-testid='paginationlist'>
                 <PaginationItem key='back-first'>
                 <BackButton type="button"  condition={currentPage<2} onClick={() => paginateSpecial('back-first')}>
                         <AiOutlineDoubleLeft />

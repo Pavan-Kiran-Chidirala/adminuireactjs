@@ -6,7 +6,7 @@ import Pages from '../Pages'
 
 import Pagination from '../Pagination'
 
-import {MainHomeContainer,HomeLoaderContainer,HomeSuccessContainer,DeleteCheckBox,BottomContainer,} from './styledComponents.js'
+import {MainHomeContainer,HomeLoaderContainer,HomeSuccessContainer,DeleteCheckBox,BottomContainer,HomeFailureContainer,HomeFailureHeading,RetryButton,} from './styledComponents.js'
 
 const appConstants= {
     initial: 'INITIAL',
@@ -35,14 +35,23 @@ class Home extends Component{
         this.setState({appStatus: appConstants.progress},this.getMemberDetails)
     }
 
+    // class method to call the getMemberDetails
+
+    startFetching= () => (
+        this.setState({appStatus: appConstants.progress},this.getMemberDetails)
+    )
+
     // class method to get data from the API
 
     getMemberDetails= async() => {
         const response= await fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json')
         const data= await response.json()
-        if(response.ok){
+        if(!response.ok){
             console.log(data)
             this.setState({appStatus: appConstants.success,membersList: data,})
+        }
+        else{
+            this.setState({appStatus: appConstants.failure})
         }
     }
 
@@ -207,7 +216,7 @@ class Home extends Component{
                 checkBoxIdAddFunction={this.checkBoxIdAdd} checkBoxIdRemoveFunction={this.checkBoxIdRemove}/>
 
                 <BottomContainer>
-                <DeleteCheckBox type="button" onClick={this.deleteSelected} >Delete Selected</DeleteCheckBox>
+                <DeleteCheckBox type="button" onClick={this.deleteSelected} data-testid='deleteSelected'>Delete Selected</DeleteCheckBox>
 
                 <Pagination paginateSpecial={this.paginateSpecialFunction} membersPerPage={membersPerPage} totalMembers={newList.length} 
                 paginate={this.paginateFunction} currentPage={currentPage} />
@@ -217,6 +226,16 @@ class Home extends Component{
         )
     } 
 
+    homeFailureContainer= () =>
+    (
+        <HomeFailureContainer>
+            <HomeFailureHeading>
+                Oops! Something went wrong.
+            </HomeFailureHeading>
+            <RetryButton type="button" onClick={this.startFetching}>Retry</RetryButton>
+        </HomeFailureContainer>
+    )
+
     // class method to check the app status
 
     checkCondition = () => {
@@ -224,7 +243,8 @@ class Home extends Component{
         switch (appStatus) {
             case appConstants.success:
                 return this.homeSuccessContainer()
-            
+            case appConstants.failure:
+                return this.homeFailureContainer()
             default:
                 return this.homeLoaderContainer()
         }

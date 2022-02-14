@@ -46,7 +46,7 @@ class Home extends Component{
     getMemberDetails= async() => {
         const response= await fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json')
         const data= await response.json()
-        if(!response.ok){
+        if(response.ok){
             console.log(data)
             this.setState({appStatus: appConstants.success,membersList: data,})
         }
